@@ -1,6 +1,6 @@
 html {
     scroll-behavior: smooth; /* Włącza natywne płynne przewijanie w całej witrynie */
-    --scroll-offset: 22rem; /* <-- TUTAJ MOŻESZ ZMIENIAĆ WARTOŚĆ (np. 8rem, 12rem, 150px) */
+    --scroll-offset: 6rem; /* <-- TUTAJ MOŻESZ ZMIENIAĆ WARTOŚĆ (np. 8rem, 12rem, 150px) */
 }
 
 body {
