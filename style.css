@@ -1,0 +1,178 @@
+html {
+    scroll-behavior: smooth; /* Włącza natywne płynne przewijanie w całej witrynie */
+    --scroll-offset: 21rem; /* <-- TUTAJ MOŻESZ ZMIENIAĆ WARTOŚĆ (np. 8rem, 12rem, 150px) */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+.gradient-text {
+    background: linear-gradient(to right, #4f46e5, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.section-title {
+    @apply text-4xl md:text-5xl font-bold text-gray-800 dark:text-white text-center;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem !important; /* Zwiększony dolny margines z flagą !important */
+}
+
+.section-subtitle {
+    @apply text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-center;
+    font-size: 1.5rem !important;
+    text-align: center;
+    margin-bottom: 1rem !important; /* Dodany margines dolny z flagą !important */
+}
+
+/* Dodatkowe, niestandardowe style */
+.card {
+    @apply bg-white dark:bg-gray-800/50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300;
+}
+
+/* 
+  Zamiast ogólnej reguły dla 'section[id]', 
+  stosujemy margines bezpośrednio do konkretnych sekcji, 
+  aby uniknąć konfliktów i mieć lepszą kontrolę.
+*/
+#kim-jestesmy, #co-robimy, #podejscie, #korzysci, #kontakt {
+    scroll-margin-top: var(--scroll-offset); /* Używamy zdefiniowanej zmiennej */
+}
+
+.scrolled {
+    background-color: rgba(12, 2, 2, 0.9);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* --- Uporządkowane i JEDYNE style dla Chatbota --- */
+#chatbot-container {
+    position: fixed;
+    bottom: 2rem; /* 32px */
+    right: 2rem; /* 32px */
+    z-index: 1000;
+}
+
+#chatbot-toggle {
+    background-color: #4f46e5; 
+    color: white;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#chatbot-toggle:hover {
+    transform: scale(1.1);
+    background-color: #5a4ff7;
+}
+
+#chatbot-window {
+    position: absolute;
+    bottom: 80px; /* Pozycja okna nad przyciskiem */
+    right: 0;
+    width: 350px;
+    height: 500px;
+    max-height: 70vh;
+    background-color: #1f2937; /* Ciemne tło okna */
+    color: #e5e7eb; /* Jasny kolor tekstu */
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform-origin: bottom right;
+    border: 1px solid #4b5563; /* Subtelna ramka */
+}
+
+#chatbot-window.hidden {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+    pointer-events: none;
+}
+
+#chatbot-header {
+    background-color: #374151; /* Ciemniejsze tło nagłówka */
+    color: #f9fafb; /* Biały tekst w nagłówku */
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    border-bottom: 1px solid #4b5563; /* Ciemniejsza linia oddzielająca */
+}
+
+#close-chatbot {
+    cursor: pointer;
+    color: #9ca3af;
+}
+
+#close-chatbot:hover {
+    color: #f9fafb;
+}
+
+#chatbot-body {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: #1f2937; /* Ciemne tło ciała */
+}
+
+#chatbot-footer {
+    padding: 1rem;
+    background-color: #374151; /* Ciemniejsze tło stopki */
+    border-top: 1px solid #4b5563; /* Ciemniejsza linia oddzielająca */
+    display: flex;
+}
+
+#chatbot-input {
+    flex-grow: 1;
+    border: 1px solid #4b5563; /* Ciemniejsza ramka pola tekstowego */
+    background-color: #374151; /* Ciemne tło pola tekstowego */
+    color: #f9fafb; /* Biały tekst w polu */
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-right: 0.5rem;
+}
+
+#chatbot-send {
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Usunięto zduplikowane style @apply, które powodowały konflikty */
+/* Te reguły zostały usunięte, ponieważ ich odpowiedniki znajdują się powyżej */
+#chatbot-button {
+    @apply bg-indigo-600 text-white rounded-full p-4 shadow-lg hover:bg-indigo-700 transition-transform duration-300 transform hover:scale-110;
+}
+
+#chatbot-window {
+    @apply hidden bg-white dark:bg-gray-800 rounded-lg shadow-2xl w-80 h-96 flex flex-col;
+    position: absolute;
+    bottom: calc(100% + 1rem); /* Pozycjonowanie okna nad przyciskiem */
+    right: 0;
+}
+
+#chatbot-header {
+    @apply bg-gray-100 dark:bg-gray-700 p-4 rounded-t-lg flex justify-between items-center;
+}
+
+#chatbot-body {
+    @apply p-4 flex-grow overflow-y-auto;
+}
+
+#chatbot-input {
+    @apply p-2 border-t border-gray-200 dark:border-gray-600;
+}
